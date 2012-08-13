@@ -16,6 +16,7 @@
 		9FFC3B0D15D879B50020D215 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FFC3B0B15D879B50020D215 /* MainStoryboard.storyboard */; };
 		9FFC3B1015D879B50020D215 /* UCMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FFC3B0F15D879B50020D215 /* UCMasterViewController.m */; };
 		9FFC3B1315D879B50020D215 /* UCDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FFC3B1215D879B50020D215 /* UCDetailViewController.m */; };
+		9FFC3B1E15D87F1B0020D215 /* 74-location.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FFC3B1D15D87F1B0020D215 /* 74-location.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		9FFC3B0F15D879B50020D215 /* UCMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UCMasterViewController.m; sourceTree = "<group>"; };
 		9FFC3B1115D879B50020D215 /* UCDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UCDetailViewController.h; sourceTree = "<group>"; };
 		9FFC3B1215D879B50020D215 /* UCDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UCDetailViewController.m; sourceTree = "<group>"; };
+		9FFC3B1D15D87F1B0020D215 /* 74-location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "74-location.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 				9FFC3B0F15D879B50020D215 /* UCMasterViewController.m */,
 				9FFC3B1115D879B50020D215 /* UCDetailViewController.h */,
 				9FFC3B1215D879B50020D215 /* UCDetailViewController.m */,
+				9FFC3B2015D87F240020D215 /* Resources */,
 				9FFC3B0015D879B50020D215 /* Supporting Files */,
 			);
 			path = UberCheckout;
@@ -101,6 +104,14 @@
 				9FFC3B0715D879B50020D215 /* UberCheckout-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9FFC3B2015D87F240020D215 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9FFC3B1D15D87F1B0020D215 /* 74-location.png */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -157,6 +168,7 @@
 			files = (
 				9FFC3B0415D879B50020D215 /* InfoPlist.strings in Resources */,
 				9FFC3B0D15D879B50020D215 /* MainStoryboard.storyboard in Resources */,
+				9FFC3B1E15D87F1B0020D215 /* 74-location.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,6 +298,7 @@
 				9FFC3B1815D879B50020D215 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
