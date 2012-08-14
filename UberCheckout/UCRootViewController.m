@@ -35,9 +35,9 @@ BOOL isKM = true;
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
-    tapGesture.cancelsTouchesInView = NO;
-    [scrollView addGestureRecognizer:tapGesture];
+//    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
+//    tapGesture.cancelsTouchesInView = NO;
+//    [scrollView addGestureRecognizer:tapGesture];
     
 }
 
@@ -61,9 +61,7 @@ BOOL isKM = true;
     [self unregisterForKeyboardNotifications];
 }
 
-- (void)hideKeyboard {
-    [scrollView resignFirstResponder];
-}
+
 
 // Call this method somewhere in the view controller setup code.
 - (void)registerForKeyboardNotifications
@@ -95,10 +93,8 @@ BOOL isKM = true;
     // Your application might not need or want this behavior.
     CGRect aRect = self.view.frame;
     aRect.size.height -= kbSize.height;
-    CGPoint origin = activeField.frame.origin;
-    origin.y -= scrollView.contentOffset.y;
-    if (!CGRectContainsPoint(aRect, origin) ) {
-        CGPoint scrollPoint = CGPointMake(0.0, activeField.frame.origin.y-(aRect.size.height));
+    if (!CGRectContainsPoint(aRect, activeField.frame.origin) ) {
+        CGPoint scrollPoint = CGPointMake(0.0, activeField.frame.origin.y-kbSize.height);
         [scrollView setContentOffset:scrollPoint animated:YES];
     }
 }
@@ -230,11 +226,11 @@ BOOL isKM = true;
     
     
 }
-//
-//- (IBAction)backgroundTouched:(id)sender {
-//    [self.view endEditing:YES];
-//    [self.view resignFirstResponder];
-//}
+
+- (IBAction)backgroundTouched:(id)sender {
+    [self.view endEditing:YES];
+    [self.view resignFirstResponder];
+}
 
 - (IBAction)didPressEnd:(id)sender {
     

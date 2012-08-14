@@ -18,7 +18,7 @@
 - (IBAction)getLocation:(id)sender;
 - (IBAction)radiusSelection:(UISegmentedControl *)sender;
 - (IBAction)searchTweets:(id)sender;
-//- (IBAction)backgroundTouched:(id)sender;
+- (IBAction)backgroundTouched:(id)sender;
 - (IBAction)didPressEnd:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
