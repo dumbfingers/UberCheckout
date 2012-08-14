@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MyCLController.h"
 
-@interface UCRootViewController : UIScrollView {
+@interface UCRootViewController : UIViewController {
     MyCLController *locationController;
     IBOutlet UITextField *activeField;
     
