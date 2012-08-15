@@ -38,6 +38,9 @@ BOOL isKM = true;
 //    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
 //    tapGesture.cancelsTouchesInView = NO;
 //    [scrollView addGestureRecognizer:tapGesture];
+    currentAddress.delegate = self;
+    area.delegate = self;
+    keyWords.delegate = self;
     
 }
 
@@ -93,8 +96,8 @@ BOOL isKM = true;
     // Your application might not need or want this behavior.
     CGRect aRect = self.view.frame;
     aRect.size.height -= kbSize.height;
-    if (!CGRectContainsPoint(aRect, activeField.frame.origin) ) {
-        CGPoint scrollPoint = CGPointMake(0.0, activeField.frame.origin.y-kbSize.height);
+    if (aRect.size.height < activeField.frame.origin.y+activeField.frame.size.height) {
+        CGPoint scrollPoint = CGPointMake(0.0, activeField.frame.origin.y+activeField.frame.size.height-aRect.size.height);
         [scrollView setContentOffset:scrollPoint animated:YES];
     }
 }

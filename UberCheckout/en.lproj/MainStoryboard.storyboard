@@ -228,34 +228,6 @@
         <image name="default_profile.png" width="73" height="73"/>
         <image name="location.png" width="20" height="20"/>
     </resources>
-    <classes>
-        <class className="UCDetailViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UCDetailViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="detailDescriptionLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="UCMasterViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UCMasterViewController.h"/>
-        </class>
-        <class className="UCRootViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UCRootViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="backgroundTouched:"/>
-                <relationship kind="action" name="didPressEnd:"/>
-                <relationship kind="action" name="getLocation:"/>
-                <relationship kind="action" name="radiusSelection:" candidateClass="UISegmentedControl"/>
-                <relationship kind="action" name="searchTweets:"/>
-                <relationship kind="outlet" name="activeField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="area" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="currentAddress" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="keyWords" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="radiusMeasurement" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="twitterId" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
