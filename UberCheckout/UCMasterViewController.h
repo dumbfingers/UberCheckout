@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UCMasterViewController : UITableViewController
+@interface UCMasterViewController : UITableViewController {
+    NSMutableArray *tweets;
+}
+
+
+@property (strong, nonatomic) NSString *stringToCarry;
+@property (retain, nonatomic) NSMutableArray *tweets;
+
+
 
 @end
+

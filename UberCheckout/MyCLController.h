@@ -20,6 +20,7 @@
 
 -(NSString *) getCurrentAddress;
 
+-(CLLocationCoordinate2D) getCurrentCoordinateFromAddress:(NSString *)address;
 -(CLLocationCoordinate2D) getCurrentCoordinate;
 
 @end

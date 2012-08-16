@@ -59,6 +59,21 @@ float currentLatitude;
     return  addressText;
 }
 
+    
+-(CLLocationCoordinate2D) getCurrentCoordinateFromAddress:(NSString *)address
+{
+    CLGeocoder *geoCoder = [[CLGeocoder alloc] init];
+    [geoCoder geocodeAddressString:address completionHandler:^(NSArray *placemarks, NSError *error) {
+        
+        CLPlacemark *topResult = [placemarks objectAtIndex:0];
+        currentLatitude = topResult.location.coordinate.latitude;
+        currentLongitude = topResult.location.coordinate.longitude;
+    }];
+    
+    CLLocationCoordinate2D coordinateFromAddress = CLLocationCoordinate2DMake(currentLatitude, currentLongitude);
+    return coordinateFromAddress;
+}
+
 -(CLLocationCoordinate2D) getCurrentCoordinate {
     
     CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(currentLatitude, currentLongitude);
