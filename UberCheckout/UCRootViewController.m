@@ -25,6 +25,7 @@ BOOL isGetLocationPressed;
 @synthesize scrollView;
 @synthesize twitterId;
 @synthesize currentAddress;
+@synthesize avatar;
 
 
 
@@ -41,6 +42,8 @@ BOOL isGetLocationPressed;
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    [self getSelfTwitterAccount];
 
     isKM = TRUE;
     isGetLocationPressed = FALSE;
@@ -138,6 +141,59 @@ BOOL isGetLocationPressed;
 //    
 //
 //}
+
+- (void)getSelfTwitterAccount
+{
+    
+    ACAccountStore *twitterAccount = [[ACAccountStore alloc] init];
+    ACAccountType *accountType = [twitterAccount accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+    
+    
+    
+    [twitterAccount requestAccessToAccountsWithType:accountType withCompletionHandler:^(BOOL granted, NSError *error) {
+        
+        if (granted == YES) {
+            
+            ACAccount *myTwitterAccount = [[twitterAccount accountsWithAccountType:accountType] objectAtIndex:0];
+            NSString *screenName = myTwitterAccount.username;
+            twitterId.text = screenName;
+            
+            //get Avatar
+            NSString *baseURL = @"http://search.twitter.com/search.json?q=";
+            NSString *searchTerm = [baseURL stringByAppendingFormat:@"%@", screenName];
+            TWRequest *postRequest = [[TWRequest alloc] initWithURL:[NSURL URLWithString:searchTerm] parameters:nil requestMethod:TWRequestMethodGET];
+            [postRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
+                
+                
+                if ([urlResponse statusCode] == 200) {
+                    
+                    // deserialize the JSON data
+                    NSError *jsonParsingError = nil;
+                    
+                    
+                    NSDictionary *rawData = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&jsonParsingError];
+                    
+                    NSLog(@"Everything seems fine. HTTP response status: %i", [urlResponse statusCode]);
+                    
+                    NSArray *raw = [rawData objectForKey:@"results"];
+                    
+                    NSDictionary *rawAvatar = [raw objectAtIndex:0];
+                    NSURL *avatarURL = [NSURL URLWithString:[rawAvatar valueForKey:@"profile_image_url"]];
+                    NSData *data = [NSData dataWithContentsOfURL:avatarURL];
+                    avatar.image = [UIImage imageWithData:data];
+                }
+
+                
+            }];
+            
+        } else {
+            //metnion that the app cannot get the twitter user name
+        }
+    }];
+    
+//    NSLog(@"My Twitter Name: %@", screenName);
+}
+
 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

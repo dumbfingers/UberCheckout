@@ -15,6 +15,11 @@
 @implementation UCDetailViewController
 
 #pragma mark - Managing the detail item
+@synthesize tweetDetail;
+@synthesize profileNameLabel;
+@synthesize userNameLabel;
+@synthesize userAvatarImageView;
+@synthesize timeStampLabel;
 
 - (void)setDetailItem:(id)newDetailItem
 {
@@ -31,7 +36,7 @@
     // Update the user interface for the detail item.
 
     if (self.detailItem) {
-        self.detailDescriptionLabel.text = [self.detailItem description];
+        self.detailTweetLabel.text = [self.detailItem description];
     }
 }
 
@@ -40,10 +45,21 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     [self configureView];
+    self.profileNameLabel.text = [self.tweetDetail objectAtIndex:0];
+    self.userNameLabel.text = [NSString stringWithFormat:@"@%@",[self.tweetDetail objectAtIndex:1]];
+    self.detailTweetLabel.text = [self.tweetDetail objectAtIndex:2];
+    self.timeStampLabel.text = [self.tweetDetail objectAtIndex:3];
+    NSURL *url = [NSURL URLWithString: [self.tweetDetail objectAtIndex:4]];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    self.userAvatarImageView.image = [UIImage imageWithData:data];
 }
 
 - (void)viewDidUnload
 {
+    [self setProfileNameLabel:nil];
+    [self setUserNameLabel:nil];
+    [self setUserAvatarImageView:nil];
+    [self setTimeStampLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }

@@ -11,6 +11,11 @@
 @interface UCDetailViewController : UIViewController
 
 @property (strong, nonatomic) id detailItem;
+@property (strong, nonatomic) NSArray *tweetDetail;
 
-@property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *detailTweetLabel;
+@property (strong, nonatomic) IBOutlet UILabel *profileNameLabel;
+@property (strong, nonatomic) IBOutlet UILabel *userNameLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *userAvatarImageView;
+@property (strong, nonatomic) IBOutlet UILabel *timeStampLabel;
 @end

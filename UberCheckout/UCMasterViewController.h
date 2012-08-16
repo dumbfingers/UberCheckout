@@ -10,12 +10,13 @@
 
 @interface UCMasterViewController : UITableViewController {
     NSMutableArray *tweets;
+    NSMutableDictionary *aTweet;
 }
 
 
 @property (strong, nonatomic) NSString *stringToCarry;
 @property (retain, nonatomic) NSMutableArray *tweets;
-
+@property (strong, nonatomic) NSMutableDictionary *aTweet;
 
 
 @end

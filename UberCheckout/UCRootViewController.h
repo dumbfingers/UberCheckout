@@ -20,6 +20,7 @@
 - (IBAction)backgroundTouched:(id)sender;
 - (IBAction)didPressEnd:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UIImageView *avatar;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UILabel *twitterId;
 @property (weak, nonatomic) IBOutlet UITextField *currentAddress;

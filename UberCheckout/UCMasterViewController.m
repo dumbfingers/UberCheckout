@@ -11,7 +11,6 @@
 #import "UCDetailViewController.h"
 
 @interface UCMasterViewController () {
-    NSMutableArray *_objects;
     int count;
 }
 @end
@@ -20,6 +19,7 @@
 
 @synthesize stringToCarry;
 @synthesize tweets;
+@synthesize aTweet;
 
 
 
@@ -78,7 +78,7 @@
 //    NSDate *object = [_objects objectAtIndex:indexPath.row];
 //    cell.textLabel.text = [object description];
     
-    NSMutableDictionary *aTweet = [tweets objectAtIndex:indexPath.row];
+    aTweet = [tweets objectAtIndex:indexPath.row];
     cell.tweetDetailLabel.text = [aTweet valueForKey:@"text"];
     cell.tweetDetailLabel.adjustsFontSizeToFitWidth = YES;
     cell.tweetDetailLabel.font = [UIFont systemFontOfSize:12];
@@ -165,13 +165,13 @@
             // show how many entries have been retrieved
             NSLog(@"TWEETS COUNT: %i", tweets.count);
             
-            //loop to parse
-            int ndx;
-            NSMutableDictionary *aTweet;
-            for (ndx = 0; ndx < tweets.count; ndx ++) {
-                aTweet = (NSDictionary *) [tweets objectAtIndex:ndx];
-                NSLog(@"TWEETS: %@", [aTweet valueForKey:@"text"]);
-            }
+//            //loop to parse for debug purposes.
+//            int ndx;
+//            NSMutableDictionary *aTweet;
+//            for (ndx = 0; ndx < tweets.count; ndx ++) {
+//                aTweet = (NSDictionary *) [tweets objectAtIndex:ndx];
+//                NSLog(@"TWEETS: %@", [aTweet valueForKey:@"text"]);
+//            }
             
         }
         else {
@@ -192,8 +192,13 @@
 {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDate *object = [_objects objectAtIndex:indexPath.row];
-        [[segue destinationViewController] setDetailItem:object];
+//        NSMutableArray *object = [_objects objectAtIndex:indexPath.row];
+//        [[segue destinationViewController] setDetailItem:object];
+        
+        UCDetailViewController *detailViewController = [segue destinationViewController];
+        
+        detailViewController.tweetDetail = [[NSArray alloc] initWithObjects:[self.aTweet valueForKey:@"from_user_name"], [self.aTweet valueForKey:@"from_user"], [self.aTweet valueForKey:@"text"], [self.aTweet valueForKey:@"created_at"], [self.aTweet valueForKey:@"profile_image_url"], nil];
+        
     }
 }
 
