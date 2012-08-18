@@ -13,6 +13,7 @@
 		9FA4103415D9484A000012E2 /* MyCLController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA4103315D9484A000012E2 /* MyCLController.m */; };
 		9FA4103715D94D8C000012E2 /* UCRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA4103615D94D8C000012E2 /* UCRootViewController.m */; };
 		9FA4103915D95186000012E2 /* default_profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FA4103815D95186000012E2 /* default_profile.png */; };
+		9FA8F5F715DFDB8A0050799E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 9FA8F5F615DFDB8A0050799E /* README.md */; };
 		9FC6F95415DC6D8400E426CE /* UCTweetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC6F95315DC6D8300E426CE /* UCTweetCell.m */; };
 		9FFC3AFA15D879B50020D215 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FFC3AF915D879B50020D215 /* UIKit.framework */; };
 		9FFC3AFC15D879B50020D215 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FFC3AFB15D879B50020D215 /* Foundation.framework */; };
@@ -36,6 +37,7 @@
 		9FA4103615D94D8C000012E2 /* UCRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UCRootViewController.m; sourceTree = "<group>"; };
 		9FA4103815D95186000012E2 /* default_profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_profile.png; sourceTree = "<group>"; };
 		9FA4103A15D9607C000012E2 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		9FA8F5F615DFDB8A0050799E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		9FC6F95215DC6D8300E426CE /* UCTweetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UCTweetCell.h; sourceTree = "<group>"; };
 		9FC6F95315DC6D8300E426CE /* UCTweetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UCTweetCell.m; sourceTree = "<group>"; };
 		9FFC3AF515D879B50020D215 /* UberCheckout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UberCheckout.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,6 +131,7 @@
 				9FA4101F15D94221000012E2 /* Classes */,
 				9FFC3B2015D87F240020D215 /* Resources */,
 				9FFC3B0015D879B50020D215 /* Supporting Files */,
+				9FA8F5F615DFDB8A0050799E /* README.md */,
 			);
 			path = UberCheckout;
 			sourceTree = "<group>";
@@ -210,6 +213,7 @@
 				9FFC3B0D15D879B50020D215 /* MainStoryboard.storyboard in Resources */,
 				9FFC3B1E15D87F1B0020D215 /* location.png in Resources */,
 				9FA4103915D95186000012E2 /* default_profile.png in Resources */,
+				9FA8F5F715DFDB8A0050799E /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
