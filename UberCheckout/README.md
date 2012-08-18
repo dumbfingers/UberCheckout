@@ -10,3 +10,6 @@ Inspired by [@shenzhuxi](http://twitter.com/shenzhuxi)'s same name project **[Ub
 - v0.1 (alpha)
 
 
+## Downloads
+
+[v0.1 (alpha)](https://github.com/ss1271/UberCheckout/downloads)
