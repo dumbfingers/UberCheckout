@@ -41,7 +41,6 @@
 
     [self searchTweets];
 //    NSLog(@"Received String: %@", [self.stringToCarry description]);
-    
 }
 
 - (void)viewDidUnload
@@ -74,24 +73,52 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UCTweetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    
+    if (cell == nil) {
+        
+        cell = [[UCTweetCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+    }
+    
+    //Add Spinner
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    [spinner setCenter:CGPointMake(160, 240)];
+    [cell.imageView addSubview:spinner];
+    [spinner startAnimating];
+    
+    dispatch_queue_t fetchTweets = dispatch_queue_create("Tweets Fetcher", NULL);
+    dispatch_async(fetchTweets, ^{
+        
+        aTweet = [tweets objectAtIndex:indexPath.row];
+        cell.tweetDetailLabel.text = [aTweet valueForKey:@"text"];
+        cell.tweetDetailLabel.adjustsFontSizeToFitWidth = YES;
+        cell.tweetDetailLabel.font = [UIFont systemFontOfSize:12];
+        cell.tweetDetailLabel.numberOfLines = 4;
+        cell.tweetDetailLabel.lineBreakMode = UILineBreakModeWordWrap;
+        
+        cell.userNameLabel.text = [aTweet valueForKey:@"from_user"];
+        
+        NSURL *url = [NSURL URLWithString:[aTweet valueForKey:@"profile_image_url"]];
+        NSData *data = [NSData dataWithContentsOfURL:url];
+        
+        [spinner stopAnimating];
+        
+        
+        
+//        [self searchTweets];
+        
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+           
+            cell.userAvatarImageView.image = [UIImage imageWithData:data];
+            cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+            
+            
+        });
+    });
+    
+    dispatch_release(fetchTweets);
+    [spinner removeFromSuperview];
 
-//    NSDate *object = [_objects objectAtIndex:indexPath.row];
-//    cell.textLabel.text = [object description];
-    
-    aTweet = [tweets objectAtIndex:indexPath.row];
-    cell.tweetDetailLabel.text = [aTweet valueForKey:@"text"];
-    cell.tweetDetailLabel.adjustsFontSizeToFitWidth = YES;
-    cell.tweetDetailLabel.font = [UIFont systemFontOfSize:12];
-    cell.tweetDetailLabel.numberOfLines = 4;
-    cell.tweetDetailLabel.lineBreakMode = UILineBreakModeWordWrap;
-    
-    cell.userNameLabel.text = [aTweet valueForKey:@"from_user"];
-    
-    NSURL *url = [NSURL URLWithString:[aTweet valueForKey:@"profile_image_url"]];
-    NSData *data = [NSData dataWithContentsOfURL:url];
-    cell.userAvatarImageView.image = [UIImage imageWithData:data];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
     return cell;
 }
 
@@ -131,11 +158,7 @@
     
     NSString *SEARCH = stringToCarry;
     
-    //Add Spinner
-    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    [spinner setCenter:CGPointMake(self.view.center.x, self.view.center.y)];
-    [self.view addSubview:spinner];
-    [spinner startAnimating];
+    
     
     TWRequest *postRequest = [[TWRequest alloc] initWithURL:[NSURL URLWithString:SEARCH] parameters:nil requestMethod:TWRequestMethodGET];
     
@@ -182,7 +205,7 @@
         }
         //        [self performSelectorOnMainThread:@selector(displayResults:) withObject:output waitUntilDone:NO];
     }];
-    [spinner stopAnimating];
+    
     
     
 }
@@ -196,7 +219,7 @@
 //        [[segue destinationViewController] setDetailItem:object];
         
         UCDetailViewController *detailViewController = [segue destinationViewController];
-        
+        aTweet = [tweets objectAtIndex:indexPath.row];
         detailViewController.tweetDetail = [[NSArray alloc] initWithObjects:[self.aTweet valueForKey:@"from_user_name"], [self.aTweet valueForKey:@"from_user"], [self.aTweet valueForKey:@"text"], [self.aTweet valueForKey:@"created_at"], [self.aTweet valueForKey:@"profile_image_url"], nil];
         
     }
